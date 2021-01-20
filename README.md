@@ -7,7 +7,7 @@ This is a basic client / server multiplayer setup using [ggez](https://github.co
 * `ggezmulti` is a shared library
 
 ## where to start
-The main structs are in `ggezmulti` and `server/src/gamestate.rs`. Tailor these to suit your purposes and fill in logic in the `gametask` and  `player_action` functions on the server. 
+The main structs are in `ggezmulti` and `server/gamestate.rs`. Tailor these to suit your purposes and fill in logic in the `gametask` and  `player_action` functions on the server. 
 
 On the client, you have to do all the usual ggez stuff as well as handle server updates and send input to the server. The client `update` function shows one way.
 
