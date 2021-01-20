@@ -131,10 +131,6 @@ async fn client_msg(id: &str, msg: Message, clients: &Clients, games: &Games) {
       Err(_) => return,
     };
 
-    if message == "ping" || message == "ping\n" {
-      return;
-    }
-
     match from_str::<ClientMessage>(&message) {
         Ok(msg) => { 
             println!("received message from {}: {:?}", id, msg);
