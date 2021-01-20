@@ -19,5 +19,5 @@ $ cargo run --manifest-path server/Cargo.toml
 
 # Then run the client passing `player_name` and `game_id`  
 $ cargo run --manifest-path client/Cargo.toml -- "Player One" "New Game" 
-
+```
 The client and server print all incoming messages. Hit `A` on the keyboard in the game client to send a message to the server, which will respond.
