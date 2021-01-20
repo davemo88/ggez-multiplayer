@@ -1,6 +1,6 @@
 # GGEZ Multiplayer Template
 
-This implements a basic client / server multiplayer setup using ggez on the client and websocket communcation with the server.
+This implements a basic client / server multiplayer setup using `ggez` on the client and websocket communcation with a `warp` webserver.
 
 `server` app manages the gamestate, sends updates to clients, and handles inbound player input  
 `client` app runs ggez event loop, handles inbound server updates, and sends input to the server  
