@@ -22,7 +22,6 @@ use ggezmulti::{
     GAME_NAME,
     GAME_SERVER_HOST,
     GAME_SERVER_PORT,
-//    PREP_SECONDS,
     GameId,
     PlayerName,
     messages::{

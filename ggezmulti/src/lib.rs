@@ -20,7 +20,6 @@ pub type GameId = String;
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PlayerState {
-    // depends on your game
     // .
     // .
     // .

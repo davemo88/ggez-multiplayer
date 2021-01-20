@@ -45,8 +45,7 @@ pub async fn gametask(game_id: GameId, games: Games) -> GameResult {
     let http_client = reqwest::Client::new();
     let game_over = false;
     while !game_over {
-        let mut gs = get_gamestate(&game_id, games.clone()).await.unwrap();//.unwrap_or(return Err("unknown game".to_string()));
-        // depends on your game
+        let mut gs = get_gamestate(&game_id, games.clone()).await.unwrap();
         // .
         // .
         // .

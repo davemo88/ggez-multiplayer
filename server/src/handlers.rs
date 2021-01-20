@@ -48,8 +48,6 @@ pub async fn register_handler(body: RegisterRequest, clients: Clients, games: Ga
         },
         None => {
 // create new game
-//            let mut gs = GameState::new();
-//            gs.player_states.insert(body.player_name.clone(), PlayerState::default());
             set_gamestate(body.game_id.clone(), GameState::new(), games.clone()).await;
             tokio::task::spawn(gametask(body.game_id.clone(), games));
         },
