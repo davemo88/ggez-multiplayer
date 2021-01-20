@@ -1,4 +1,4 @@
-#GGEZ Multiplayer Template
+# GGEZ Multiplayer Template
 
 This implements a basic client / server multiplayer setup using ggez on the client and websockets for communcation with the server.
 
