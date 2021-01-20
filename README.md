@@ -3,7 +3,7 @@
 This implements a basic client / server multiplayer setup using `ggez` on the client and websocket communcation with a `warp` server.
 
 * `server` app manages the gamestate, sends updates to clients, and handles inbound player input  
-* `client` app runs ggez event loop, handles inbound server updates, and sends input to the server  
+* `client` app runs the ggez event loop, handles inbound server updates, and sends input to the server  
 * `ggezmulti` is a shared library
 
 ## where to start
