@@ -44,8 +44,8 @@ pub const WINDOW_HEIGHT: f32 = 600.;
 
 fn main() {
 
-    let matches = App::new("biceps-client")
-        .help("biceps-client \"player name\" \"game id\"")
+    let matches = App::new("game-client")
+        .help("game-client \"player name\" \"game id\"")
         .arg(Arg::with_name("player-name")
             .index(1)
             .required(true)
