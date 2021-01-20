@@ -14,10 +14,11 @@ On the client, you have to do all the usual ggez stuff as well as handle server 
 ## test
 Run the server  
 
-`~/ggez-multiplayer$ cargo run --manifest-path server/Cargo.toml`  
+`cd ggez-multiplayer`  
+`$ cargo run --manifest-path server/Cargo.toml`  
 
 Then run the client passing `player_name` and `game_id`  
 
-`~ggez-multiplayer$ cargo run --manifest-path client/Cargo.toml -- player_one new_game`  
+`$ cargo run --manifest-path client/Cargo.toml -- player_one new_game`  
 
 The client and server print all incoming messages. Hit `A` on the keyboard in the game client to send a message to the server, which will respond.
