@@ -21,7 +21,6 @@ pub struct RegisterResponse {
   pub url: String,
 }
 
-pub type FightRecord = Vec::<String>;
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct ClientMessage {
     pub player_name: PlayerName,
