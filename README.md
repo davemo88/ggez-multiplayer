@@ -1,4 +1,4 @@
-# ggez Multiplayer Template
+# ggez multiplayer template
 
 This implements a basic client / server multiplayer setup using `ggez` on the client and websocket communcation with a `warp` server.
 
