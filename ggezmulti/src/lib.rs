@@ -6,9 +6,6 @@ use serde::{
 
 pub mod messages;
 
-pub type Scrap = i64;
-pub type Hp = i64;
-
 pub const GAME_NAME: &'static str = "YourGame";
 pub const GAME_AUTHOR: &'static str = "You";
 
