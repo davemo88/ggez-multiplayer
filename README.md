@@ -2,9 +2,9 @@
 
 This implements a basic client / server multiplayer setup using ggez on the client and websockets for communcation with the server.
 
-`server` app manages the gamestate, sends updates to clients, and handles inbound player input
-`client` app runs ggez event loop, handles inbound server updates, and sends input to the server
-`libmultiplayer` contains common code used by both apps
+`server` app manages the gamestate, sends updates to clients, and handles inbound player input  
+`client` app runs ggez event loop, handles inbound server updates, and sends input to the server  
+`libmultiplayer` contains common code used by both apps  
 
 ## template
 The main structs are in `libmultiplayer/lib.rs` and `server/gamestate`. Tailor these to suit your game and fill in logic in the `gametask` and  `player_action` functions on the server. 
