@@ -12,12 +12,12 @@ The main structs are in `ggezmulti` and `server/gamestate.rs`. Tailor these to s
 On the client, you have to do all the usual ggez stuff as well as handle server updates and send input to the server.
 
 ## test
-To test, run the server  
+```
+# Run the server  
+$ cd ggez-multiplayer  
+$ cargo run --manifest-path server/Cargo.toml
 
-`$ cargo run --manifest-path server/Cargo.toml`  
-
-Then run the client passing `player_name` and `game_id`  
-
-`$ cargo run --manifest-path client/Cargo.toml -- player_one new_game`  
-
+# Then run the client passing `player_name` and `game_id`  
+$ cargo run --manifest-path client/Cargo.toml -- "Player One" "New Game" 
+```
 The client and server print all incoming messages. Hit `A` on the keyboard in the game client to send a message to the server, which will respond.
