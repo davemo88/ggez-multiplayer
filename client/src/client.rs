@@ -10,7 +10,7 @@ use ggez::{
     graphics,
     timer,
 };
-use libmultiplayer::{
+use ggezmulti::{
     Action,
     GameId,
     PlayerName,

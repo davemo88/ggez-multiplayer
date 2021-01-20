@@ -12,7 +12,7 @@ use warp::{
     Filter,
     Rejection,
 };
-use libmultiplayer::{
+use ggezmulti::{
     GameId,
     PlayerName,
 };

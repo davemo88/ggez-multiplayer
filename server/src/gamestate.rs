@@ -4,7 +4,7 @@ use std::{
 use reqwest;
 use tokio::sync::Mutex;
 use std::collections::HashMap;
-use libmultiplayer::{
+use ggezmulti::{
     GameId,
     PlayerName,
     PlayerState,

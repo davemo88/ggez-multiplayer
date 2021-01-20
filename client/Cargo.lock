@@ -808,7 +808,7 @@ dependencies = [
  "clap",
  "ggez",
  "ggez-goodies",
- "libmultiplayer",
+ "ggezmulti",
  "rand 0.7.3",
  "reqwest",
  "serde",
@@ -929,6 +929,14 @@ dependencies = [
  "ggez",
  "nalgebra-glm",
  "tiled",
+]
+
+[[package]]
+name = "ggezmulti"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -1440,14 +1448,6 @@ name = "libm"
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c7d73b3f436185384286bd8098d17ec07c9a7d2388a6599f824d8502b529702a"
-
-[[package]]
-name = "libmultiplayer"
-version = "0.1.0"
-dependencies = [
- "serde",
- "serde_json",
-]
 
 [[package]]
 name = "libudev-sys"

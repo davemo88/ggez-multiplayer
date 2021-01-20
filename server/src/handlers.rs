@@ -14,7 +14,7 @@ use warp::{
     ws::{Message, Ws, WebSocket},
     Reply,
 };
-use libmultiplayer::{
+use ggezmulti::{
     GAME_SERVER_PORT,
     PlayerState,
     messages::{

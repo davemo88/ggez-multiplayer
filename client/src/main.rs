@@ -17,7 +17,7 @@ use ggez::{
     conf,
     event,
 };
-use libmultiplayer::{
+use ggezmulti::{
     GAME_AUTHOR,
     GAME_NAME,
     GAME_SERVER_HOST,

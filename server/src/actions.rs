@@ -1,4 +1,4 @@
-use libmultiplayer::{
+use ggezmulti::{
     Action,
     GameId,
     PlayerName,
