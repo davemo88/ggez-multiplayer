@@ -128,7 +128,6 @@ pub async fn client_connection(ws: WebSocket, id: String, clients: Clients, mut 
 }
 
 async fn client_msg(id: &str, msg: Message, clients: &Clients, games: &Games) {
-    println!("received message from {}: {:?}", id, msg);
     let message = match msg.to_str() {
       Ok(v) => v,
       Err(_) => return,
@@ -140,6 +139,7 @@ async fn client_msg(id: &str, msg: Message, clients: &Clients, games: &Games) {
 
     match from_str::<ClientMessage>(&message) {
         Ok(msg) => { 
+            println!("received message from {}: {:?}", id, msg);
             let gs = player_action(msg.player_name.clone(), msg.game_id.clone(), msg.action, games.clone()).await;
             let _r = clients.lock().await.get(id).unwrap().sender.as_ref().unwrap().send(Ok(Message::text(serde_json::to_string(&ServerMessage {
                 player_name: Some(msg.player_name.clone()),

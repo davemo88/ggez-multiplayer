@@ -65,7 +65,6 @@ impl EventHandler for GameClient {
                 self.handle_server_msg(msg);
             }
         }
-        self.input_state.update(timer::delta(ctx).as_secs_f32());
         if self.input_state.get_default_player_button_pressed(input::GameButton::A) {
             let _r = self.client_msg_tx.send(ClientMessage {
                 player_name: self.player_name.clone(),
@@ -73,6 +72,7 @@ impl EventHandler for GameClient {
                 action: Action::MyAction,
             });
         }
+        self.input_state.update(timer::delta(ctx).as_secs_f32());
         Ok(())
     }
 
