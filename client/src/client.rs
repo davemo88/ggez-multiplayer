@@ -61,11 +61,13 @@ impl GameClient {
 impl EventHandler for GameClient {
     fn update(&mut self, ctx: &mut Context) -> GameResult<()> {
         if timer::check_update_time(ctx, DESIRED_FPS) {
+// handle server update
             if let Ok(msg) = self.server_msg_rx.try_recv() {
                 self.handle_server_msg(msg);
             }
         }
         if self.input_state.get_default_player_button_pressed(input::GameButton::A) {
+// send input to server
             let _r = self.client_msg_tx.send(ClientMessage {
                 player_name: self.player_name.clone(),
                 game_id: self.game_id.clone(),
