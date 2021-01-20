@@ -1,8 +1,12 @@
 use std::{
     sync::Arc,
+    time::Duration,
 };
 use reqwest;
-use tokio::sync::Mutex;
+use tokio::{
+    sync::Mutex,
+    time,
+};
 use std::collections::HashMap;
 use ggezmulti::{
     GameId,
@@ -54,6 +58,7 @@ pub async fn gametask(game_id: GameId, games: Games) -> GameResult {
                 player_state:None,
             })
             .send().await.unwrap();
+        time::delay_for(Duration::from_millis(100)).await;
     };
     Ok(())
 }
