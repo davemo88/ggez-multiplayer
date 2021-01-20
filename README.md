@@ -12,4 +12,4 @@ The main structs are in `ggezmulti` and `server/gamestate.rs`. Tailor these to s
 On the client, you have to do all the usual ggez stuff as well as handle server updates and send input to the server.
 
 ## test
-To test, run the server and then run the client. The client and server print all incoming messages. Hitting `A` on the keyboard in the client will send a message to the server, which will respond.
+To test, run the server and then run the client. The client and server print all incoming messages. Hit `A` on the keyboard in the client to send a message to the server, which will respond.
