@@ -1,4 +1,4 @@
-# ggez multiplayer template
+# ggez multiplayer starter
 
 This is a basic client / server multiplayer setup using [ggez](https://github.com/ggez/ggez) on the client and websocket communication with a [warp](https://github.com/seanmonstar/warp) server.
 
