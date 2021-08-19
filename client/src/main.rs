@@ -22,8 +22,6 @@ use ggezmulti::{
     GAME_NAME,
     GAME_SERVER_HOST,
     GAME_SERVER_PORT,
-    GameId,
-    PlayerName,
     messages::{
         ClientMessage,
         RegisterRequest,
@@ -34,6 +32,9 @@ use ggezmulti::{
 
 mod client;
 mod input;
+//mod resources;
+//mod world;
+//mod scenes;
 
 use client::GameClient;
 
@@ -41,27 +42,24 @@ pub const DESIRED_FPS: u32 = 60;
 pub const WINDOW_WIDTH: f32 = 800.;
 pub const WINDOW_HEIGHT: f32 = 600.;
 
+pub type Result<T> = std::result::Result<T, Box::<dyn std::error::Error>>;
+
 fn main() {
 
     let matches = App::new("game-client")
-        .help("game-client \"player name\" \"game id\"")
+        .help("game-client \"player name\"")
         .arg(Arg::with_name("player-name")
             .index(1)
             .required(true)
             .takes_value(true))
-        .arg(Arg::with_name("game-id")
-            .index(2)
-            .required(true)
-            .takes_value(true))
         .get_matches();
 
-    let (player_name, game_id): (PlayerName, GameId) = (matches.value_of("player-name").unwrap().into(), matches.value_of("game-id").unwrap().into());
+    let player_name = matches.value_of("player-name").unwrap();
 
     let register_response: RegisterResponse = HttpClient::new().post(
         &format!("http://{}:{}/register", GAME_SERVER_HOST, GAME_SERVER_PORT))
         .json(&RegisterRequest {
-            player_name: player_name.clone(),
-            game_id: game_id.clone(),
+            player_name: player_name.into(),
         })
         .send().unwrap().json().unwrap();
 
@@ -72,14 +70,13 @@ fn main() {
     let (server_tx, server_rx) = channel::<ServerMessage>();
     let (client_tx, client_rx) = channel::<ClientMessage>();
 
-    let (ref mut ctx, ref mut event_loop) = ContextBuilder::new(GAME_NAME, GAME_AUTHOR)
-        .conf(conf::Conf::new())
+    let (mut ctx, event_loop) = ContextBuilder::new(GAME_NAME, GAME_AUTHOR)
         .window_setup(conf::WindowSetup::default().title(GAME_NAME))
         .window_mode(conf::WindowMode::default().dimensions(WINDOW_WIDTH, WINDOW_HEIGHT))
         .build()
         .expect("aiieee");
 
-    let event_handler = &mut GameClient::new(ctx, player_name.clone(), game_id.clone(), server_rx, client_tx);
+    let event_handler = GameClient::new(&mut ctx, player_name.into(), server_rx, client_tx);
 
 // receive incoming messages from server
     thread::spawn(move || {
@@ -88,8 +85,7 @@ fn main() {
                 let mut msg = Message::from(msg.clone());
                 let string_payload = std::str::from_utf8(msg.payload.to_mut()).unwrap();
                 let server_msg: ServerMessage = serde_json::from_str(&string_payload).unwrap();
-                println!("server_msg: {:?}", server_msg);
-                let _r = server_tx.send(server_msg);
+                server_tx.send(server_msg).unwrap();
             }
         }
     });
@@ -97,14 +93,13 @@ fn main() {
 // send outgoing messages from client
     thread::spawn(move || {
         loop {
-            let client_msg = client_rx.recv().unwrap();
+            let client_msg = match client_rx.recv() {
+                Ok(msg) => msg,
+                Err(_) => break,
+            };
             let _r = sender.send_message(&Message::text(serde_json::to_string(&client_msg).unwrap()));
         }
     });
 
-    match event::run(ctx, event_loop, event_handler) {
-        Ok(_) => (),
-        Err(e) => println!("Error occurred: {}", e)
-    };
+    event::run(ctx, event_loop, event_handler);
 }
-

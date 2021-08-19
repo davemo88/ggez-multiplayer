@@ -1,5 +1,5 @@
 [package]
-name = "game-client"
+name = "client"
 version = "0.1.0"
 authors = ["d <d@kasofsk.xyz>"]
 edition = "2018"
@@ -8,8 +8,8 @@ edition = "2018"
 
 [dependencies]
 ggezmulti = { path = "../ggezmulti" }
-ggez = "0.5.1"
-ggez-goodies = { git = "https://github.com/ggez/ggez-goodies", branch = "devel"}
+ggez = "0.6"
+ggez-goodies = { git = "https://github.com/davemo88/ggez-goodies", branch = "devel"}
 clap = "2"
 rand = "0.7.3"
 reqwest = { version = "0.10", features = ["blocking", "json"] }

@@ -2,18 +2,12 @@ use serde::{
     Serialize,
     Deserialize,
 };
-use crate::{
-    Action,
-    GameId,
-    PlayerName,
-    PlayerState,
-};
+use crate::PlayerName;
 
 
 #[derive(Serialize, Deserialize)]
 pub struct RegisterRequest {
   pub player_name: PlayerName,
-  pub game_id: GameId,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -22,15 +16,11 @@ pub struct RegisterResponse {
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct ClientMessage {
-    pub player_name: PlayerName,
-    pub game_id: GameId,
-    pub action: Action,
+pub enum ClientMessage {
+    PressedA,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct ServerMessage {
-    pub game_id: GameId,
-    pub player_name: Option<PlayerName>,
-    pub player_state: Option<PlayerState>,
+pub enum ServerMessage {
+    PressedA,
 }
